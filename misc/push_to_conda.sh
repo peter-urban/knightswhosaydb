@@ -8,7 +8,7 @@ cd ../ #script is in misc/, go to repo root
 # ---------------------------------------------------------------------------
 # 1. Read current version from pyproject.toml (single source of truth)
 # ---------------------------------------------------------------------------
-CURRENT_VERSION=$(grep -m1 '^version' pyproject.toml | sed 's/.*"\(.*\)".*/\1/').devp
+CURRENT_VERSION=$(grep -m1 '^version' pyproject.toml | sed 's/.*"\(.*\)".*/\1/')
 echo "Current version: $CURRENT_VERSION"
 
 # ---------------------------------------------------------------------------

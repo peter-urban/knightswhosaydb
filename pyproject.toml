@@ -1,6 +1,6 @@
 [project]
 name = "knightswhosaydb"
-version = "0.1.1.dev1"
+version = "0.1.7.dev2"
 description = "Multibeam backscatter reading and processing"
 authors = [{name = "Benjamin Misiuk", email = "bmisiuk@mun.ca"},
            {name = "Peter Urban", email = "peter.urban@urcoustics.com"}]
@@ -18,14 +18,11 @@ dependencies = [
     "numpy",
     "pandas",
     "scipy",
+    # PyPI lags the conda channel: pip users get the latest published there,
+    # while conda builds pin the dev release (recipe.yaml / [tool.pixi]).
     "themachinethatgoesping>=0.35.1,<0.36",
-    "rasterio>=1.5.0,<2"
+    "rasterio>=1.5.0,<2",
 ]
-
-[project.optional-dependencies]
-grid = ["rasterio"]
-kmall = ["themachinethatgoesping >=0.35.1"]
-all = ["themachinethatgoesping >=0.35.1", "rasterio"]
 
 [project.urls]
 Homepage = "https://github.com/benjaminmisiuk/knights-who-say-db"
@@ -37,49 +34,3 @@ requires = ["hatchling"]
 [tool.hatch.build.targets.wheel]
 packages = ["src/knightswhosaydb"]
 
-# ---------------------------------------------------------------------------
-# pixi
-# ---------------------------------------------------------------------------
-
-[tool.pixi.workspace]
-channels = ["conda-forge", "themachinethatgoesping"]
-platforms = [
-    { platform = "linux-64", glibc = "2.34" },
-    { platform = "osx-arm64", macos = "14.0" },
-    "win-64",
-]
-
-[tool.pixi.pypi-dependencies]
-knightswhosaydb = { path = ".", editable = true }
-
-[tool.pixi.dependencies]
-python = ">=3.12"
-hatchling = ">=1.32.0,<2"
-pip = ">=26.2.1,<27"
-pytest = ">=9.1.1,<10"
-nbmake = ">=1.5.5,<2"
-
-
-# [tool.pixi.tasks]
-# test = "pytest tests/"
-
-[tool.pixi.feature.build.dependencies]
-python-build = ">=1.6.0,<2"
-twine = ">=7.0.0,<8"
-anaconda-client = ">=1.14.1,<2"
-rattler-build = ">=0.75.0,<0.76"
-
-[tool.pixi.feature.build.tasks]
-test = "python -m pytest -v tests/"
-build-pypi = "python -m build"
-upload-pypi = { cmd = "twine upload dist/*", depends-on = ["build-pypi"] }
-build-conda = "rattler-build build --recipe recipe/recipe.yaml --output output"
-#test_notebooks = "python test_notebooks.py"
-clean_notebooks = "python misc/clean_notebooks.py"
-
-[tool.pixi.environments]
-default = { solve-group = "default" }
-build = { features = ["build"], solve-group = "default" }
-
-# [tool.pytest.ini_options]
-# testpaths = ["tests"]
