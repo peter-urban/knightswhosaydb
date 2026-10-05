@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.1.1.dev1"  # updated by publish.sh from pyproject.toml
+  version: "0.1.7.dev2"  # kept in sync with pyproject.toml by misc/push_to_conda.sh
 
 package:
   name: knightswhosaydb
@@ -25,12 +25,8 @@ requirements:
     - hatchling
   run:
     - python >=3.12
-    - themachinethatgoesping >=0.35.1
-    - rasterio
-    # pythonnet (win) and pyobjc-framework-cocoa (mac) are declared in
-    # pyproject.toml with sys_platform markers — pip handles them at
-    # install time.  They cannot be listed here because the package is
-    # noarch: python.
+    - themachinethatgoesping >=0.35.2.dev3,<0.36
+    - rasterio >=1.5.0,<2
 
 
 tests:
