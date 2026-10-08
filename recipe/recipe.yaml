@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.1.7.dev2"  # kept in sync with pyproject.toml by misc/push_to_conda.sh
+  version: "0.2.dev3"  # kept in sync with pyproject.toml by misc/push_to_conda.sh
 
 package:
   name: knightswhosaydb
@@ -25,7 +25,7 @@ requirements:
     - hatchling
   run:
     - python >=3.12
-    - themachinethatgoesping >=0.35.2.dev3,<0.36
+    - themachinethatgoesping >=0.36.0,<0.37
     - rasterio >=1.5.0,<2
 
 

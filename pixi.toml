@@ -8,18 +8,18 @@ platforms = [
 ]
 
 [dependencies]
-python = ">=3.12"
-hatchling = ">=1.32.0,<2"
+python = ">=3.14.8,<3.15"
+hatchling = ">=1.32.4,<2"
 pip = ">=26.2.1,<27"
 pytest = ">=9.1.1,<10"
 nbmake = ">=1.5.5,<2"
-themachinethatgoesping = ">=0.35.2.dev6,<0.36"
+themachinethatgoesping = ">=0.36.0,<0.37"
 
 [feature.build.dependencies]
-python-build = ">=1.6.0,<2"
+python-build = ">=1.6.1,<2"
 twine = ">=7.0.0,<8"
 anaconda-client = ">=1.14.1,<2"
-rattler-build = ">=0.75.0,<0.76"
+rattler-build = ">=0.76.1,<0.77"
 
 [feature.build.tasks]
 test = "python -m pytest -v tests/"
