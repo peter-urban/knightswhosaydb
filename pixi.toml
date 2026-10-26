@@ -8,12 +8,12 @@ platforms = [
 ]
 
 [dependencies]
-python = ">=3.14.8,<3.15"
+python = ">=3.14.8,<3.16"
 hatchling = ">=1.32.4,<2"
 pip = ">=26.2.1,<27"
 pytest = ">=9.1.1,<10"
 nbmake = ">=1.5.5,<2"
-themachinethatgoesping = ">=0.36.0,<0.37"
+themachinethatgoesping = ">=0.36.0,<=0.38.0"
 
 [feature.build.dependencies]
 python-build = ">=1.6.1,<2"
